@@ -17,6 +17,20 @@ function configDateLimit() {
 }
 document.addEventListener("DOMContentLoaded", configDateLimit);
 
+/* function age(birth) {
+    const dateBirth = new Date(birth);
+    const today = new Date();
+
+    let age = today.getFullYear() - dateBirth.getFullYear()
+    const month = today.getMonth() - dateBirth.getMonth()
+
+    if (month <0 || (month === 0 && today.getDate() < dateBirth.getDate() )) {
+        age--;
+    }
+
+    return age;
+} */
+
 function IMC(event) {
     event.preventDefault();
 

@@ -39,4 +39,17 @@ function IMC(event) {
 
     document.getElementById("resultIMC").innerText = `${name}, seu IMC é ${IMC.toFixed(2)} (${classification})`;
     //console.log(`${name}, seu IMC é ${IMC.toFixed(2)} (${classification})`);
+
+    const resultDiv = document.getElementById("result");
+    const resetIMC = document.getElementById("resetIMC");
+    const calcIMC = document.getElementById("calcIMC");
+
+    calcIMC.addEventListener('click', function() {
+        resultDiv.style.display = "flex";
+    })
+
+    resetIMC.addEventListener('click', function() {
+        resultDiv.style.display = "none";
+    })
 }
+

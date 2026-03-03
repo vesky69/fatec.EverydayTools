@@ -16,7 +16,7 @@
             <input placeholder="Nome..." id="name" required title="Nome completo">
 
             <label for="date">Data de nascimento:</label>
-            <input type="date" id="date">
+            <input type="date" id="date" required>
 
             <label for="weight">Peso (Kg):</label>
             <input type="number" placeholder="00.0" id="weight" name="weight" step="0.1" min="0" max="350" required title="Ex: 68.5">
@@ -25,8 +25,8 @@
             <input type="number" placeholder="0.00" id="height" name="height" step="0.01" min="0" max="2.50" required title="Ex: 1.70">
 
             <div class="buttons">
-                <button type="submit">Calcular</button>
-                <button type="reset" onclick="reset()">Limpar</button>
+                <button type="submit" id="calcIMC">Calcular</button>
+                <button type="reset" id="resetIMC">Limpar</button>
             </div>
         </form>
     </div>

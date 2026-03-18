@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo IMC</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="form/style.css">
+
+    <a href="index.html">
+        <button id="btn" title="Home"<i class="fa-solid fa-house"></i></button>
+    </a>
+
+    <div>
+        <form onsubmit="IMC(event)" id="formIMC">
+            <h1>Cálculo IMC</h1>
+
+            <label for="name">Nome:</label>
+            <input placeholder="Nome..." id="name" required title="Nome completo">
+
+            <label for="date">Data de nascimento:</label>
+            <input type="date" id="date" required>
+
+            <label for="weight">Peso (Kg):</label>
+            <input type="number" placeholder="00.0" id="weight" name="weight" step="0.1" min="0" max="350" required title="Ex: 68.5">
+
+            <label for="height">Altura (M):</label>
+            <input type="number" placeholder="0.00" id="height" name="height" step="0.01" min="0" max="2.50" required title="Ex: 1.70">
+
+            <div class="buttons">
+                <button type="submit" id="calcIMC">Calcular</button>
+                <button type="reset" id="resetIMC">Limpar</button>
+            </div>
+        </form>
+    </div>
+    <div id="result">
+        <p id="resultIMC"></p>
+    </div>
+    <script src="form/script.js"></script>
+</body>
+</html>

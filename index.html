@@ -3,42 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cálculo IMC</title>
-    <link rel="icon" type="image/png" href="images/favicon.png">
+    <title>Everiday Tools</title>
 </head>
 <body>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="form/style.css">
+    <link rel="stylesheet" href="home/style.css">
 
-    <a href="inss.html">
-        <button id="btn" title="INSS"<i class="fa-solid fa-angle-right"></i></button>
-    </a>
+    <header>
+        <h1>Logo</h1>
+        <nav class="btnHeader">
+            <a href="#">
+                <button title="Busca" <i class="fa-solid fa-magnifying-glass"></i></button> <!-- Função de busca -->
+            </a>
+            <a href="#">
+                <button title="Mode" <i class="fa-solid fa-circle-half-stroke"></i></button> <!-- Função dark e light mode Dark-->
+                <!-- DARK MODE:
+                --bg-main: #0f172a; fundo geral
+                --bg-secondary: #1e293b; section
+                --bg-soft: #334155; hover
+                --hover: #475569; hover
+                --text: #f1f5f9; textos
+                --accent: #38bdf8; azulzinho -->
+            </a>
+            <a href="#">
+                <button title="Idioma" <i class="fa-solid fa-language"></i></button> <!-- Função de Idioma pt-BR e en -->
+            </a>
+            <a href="#">
+                <button title="Menu" <i class="fa-solid fa-bars"></i></button> <!-- Função de busca por categorias -->
+            </a>
+            <a href="#">
+                <button title="Login" <i class="fa-regular fa-user"></i></button> <!-- Função login, logout e cadastro -->
+            </a>
+        </nav>
+    </header>
 
-    <div>
-        <form onsubmit="IMC(event)" id="formIMC">
-            <h1>Cálculo IMC</h1>
+    <main>
+        <section class="introduction">
+            <h1>Bem-vindo(a) ao Everyday Tools</h1>
+            <p>Use calculadoras e ferramentas do dia a dia.</p>
+        </section>
 
-            <label for="name">Nome:</label>
-            <input placeholder="Nome..." id="name" required title="Nome completo">
-
-            <label for="date">Data de nascimento:</label>
-            <input type="date" id="date" required>
-
-            <label for="weight">Peso (Kg):</label>
-            <input type="number" placeholder="00.0" id="weight" name="weight" step="0.1" min="0" max="350" required title="Ex: 68.5">
-
-            <label for="height">Altura (M):</label>
-            <input type="number" placeholder="0.00" id="height" name="height" step="0.01" min="0" max="2.50" required title="Ex: 1.70">
-
-            <div class="buttons">
-                <button type="submit" id="calcIMC">Calcular</button>
-                <button type="reset" id="resetIMC">Limpar</button>
+        <section class="container">
+            <h1>Ferramentas</h1>
+            <div class="cards">
+                <a href="imc.html" class="card">
+                    <div>
+                        <h3>IMC</h3>
+                        <p>Calcule seu IMC.</p>
+                    </div>
+                </a>
+                <a href="salary.html" class="card">
+                    <div>
+                        <h3>Calculadora de salário</h3>
+                        <p>Calcule seu INSS, IRRF e salário líquido com base no seu regime de trabalho.</p>
+                    </div>
+                </a>
             </div>
-        </form>
-    </div>
-    <div id="result">
-        <p id="resultIMC"></p>
-    </div>
-    <script src="form/script.js"></script>
+        </section>
+    </main>
+
+    <!-- <footer>  
+        <p>© 2026 - Meu Site</p>
+    </footer> -->
+
+    <script src="home/script.js"></script>
 </body>
 </html>

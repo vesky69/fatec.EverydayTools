@@ -1,0 +1,17 @@
+# =============================================
+#  .gitignore — Aula 07: Formulário com CEP
+# =============================================
+
+# O arquivo JavaScript será desenvolvido AO VIVO em aula.
+# Por isso, ele NÃO será versionado no repositório.
+# Os alunos irão criar esse arquivo junto com o professor.
+/app.js
+
+# =============================================
+#  Arquivos comuns de sistema operacional
+# =============================================
+
+
+# VS Code (configurações pessoais)
+.vscode/
+

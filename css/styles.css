@@ -256,7 +256,7 @@ label {
 input,
 select {
   width: 100%;
-  height: var(--space-3);
+  height: var(--space-4);
   border: solid 1px var(--color-border);
   border-radius: var(--radius-sm);
   padding: var(--space-1);
@@ -269,18 +269,12 @@ select:hover {
   background-color: var(--color-surface);
 }
 
-input[type="number"],
-input[type="date"] {
-  height: var(--space-4);
-}
-
-
 /* ================================================================
    8. BOTÕES
    =================
 */
 .btnHeader {
-  background-color: var(--color-surface);
+  background-color: var(--color-primary);
   border-radius: var(--radius-sm);
   border: solid 1px var(--color-border);
   margin-top: var(--space-2);
@@ -293,7 +287,7 @@ input[type="date"] {
 }
 
 button:hover {
-  background-color: var(--color-primary);
+  background-color: var(--color-primary-dk);
   color: white;
 }
 
@@ -314,7 +308,7 @@ button:hover {
 }
 
 .buttons button {
-  width: 100%;
+  width: 106%;
 }
 
 

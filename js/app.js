@@ -19,9 +19,9 @@
  * @param {string} cep - CEP sem máscara (8 dígitos)
  */
 async function searchCEP(cep) {
-  const cepStatus = document.getElementById('cepStatus');
-  cepStatus.innerHTML = "<img src='loading.gif' alt='Buscando o CEP'> Carregando...";
-  cepStatus.style.color = 'blue';
+  const zipStatus = document.getElementById('zipStatus');
+  zipStatus.innerHTML = "<img src='loading.gif' alt='Buscando o CEP'> Carregando...";
+  zipStatus.style.color = 'blue';
 
   try {
     const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
@@ -36,27 +36,27 @@ async function searchCEP(cep) {
       throw new Error('CEP não encontrado!');
     }
 
-    document.getElementById('logradouro').value = data.logradouro;
-    document.getElementById('bairro').value = data.bairro;
-    document.getElementById('cidade').value = data.localidade;
-    document.getElementById('estado').value = data.uf;
+    document.getElementById('street').value = data.logradouro;
+    document.getElementById('neighborhood').value = data.bairro;
+    document.getElementById('city').value = data.localidade;
+    document.getElementById('state').value = data.uf;
 
-    cepStatus.textContent = 'CEP encontrado com sucesso!';
-    cepStatus.style.color = 'green';
+    zipStatus.textContent = 'CEP encontrado com sucesso!';
+    zipStatus.style.color = 'green';
   } catch (error) {
-    cepStatus.textContent = error.message;
-    cepStatus.style.color = 'red';
-    document.getElementById('logradouro').value = '';
-    document.getElementById('bairro').value = '';
-    document.getElementById('cidade').value = '';
-    document.getElementById('estado').value = '';
+    zipStatus.textContent = error.message;
+    zipStatus.style.color = 'red';
+    document.getElementById('street').value = '';
+    document.getElementById('neighborhood').value = '';
+    document.getElementById('city').value = '';
+    document.getElementById('state').value = '';
   }
 }
 
 /**
  * Inicializa o event listener para o campo de CEP
  */
-const cepInput = document.getElementById('cep');
+const cepInput = document.getElementById('postalCode');
 if (cepInput) {
   cepInput.addEventListener('input', (e) => {
     const cep = cepInput.value.replace(/\D/g, '');
@@ -84,18 +84,22 @@ function renderTable() {
 /**
  * Event listener para submit do formulário de CEP
  */
-const form = document.getElementById('formRegister');
+const form = document.getElementById('registerForm');
 if (form) {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const newClient = {
       id: crypto.randomUUID(),
-      cep: document.getElementById('cep').value,
-      logradouro: document.getElementById('logradouro').value,
-      bairro: document.getElementById('bairro').value,
-      cidade: document.getElementById('cidade').value,
-      estado: document.getElementById('estado').value,
+      taxId: document.getElementById('taxId').value,
+      fullName: document.getElementById('fullName').value,
+      postalCode: document.getElementById('postalCode').value,
+      street: document.getElementById('street').value,
+      addressNumber: document.getElementById('addressNumber').value,
+      complement: document.getElementById('addressComplement') ? document.getElementById('addressComplement').value : '',
+      neighborhood: document.getElementById('neighborhood').value,
+      city: document.getElementById('city').value,
+      state: document.getElementById('state').value,
     };
 
     const clients = JSON.parse(localStorage.getItem('clients')) || [];
@@ -104,6 +108,7 @@ if (form) {
     renderTable();
   });
 }
+
 
 
 /* ================================================================
@@ -117,7 +122,7 @@ if (form) {
  */
 function setDateLimit() {
   const limit = new Date().toISOString().split("T")[0];
-  const inputDate = document.getElementById("date");
+  const inputDate = document.getElementById("birthDate");
 
   if (inputDate) {
     inputDate.setAttribute("max", limit);
@@ -156,7 +161,7 @@ function age(birth) {
 function IMC(event) {
   event.preventDefault();
 
-  const name = document.getElementById("name").value;
+  const name = document.getElementById("userName").value;
   const weight = parseFloat(document.getElementById("weight").value);
   const height = parseFloat(document.getElementById("height").value);
 
@@ -173,11 +178,11 @@ function IMC(event) {
     classification = "Abaixo do peso";
   }
 
-  document.getElementById("resultIMC").innerText = `${name} (${age(document.getElementById("date").value)} anos), seu IMC é ${IMC.toFixed(2)} (${classification})`;
+  document.getElementById("resultImc").innerText = `${name} (${age(document.getElementById("birthDate").value)} anos), seu IMC é ${IMC.toFixed(2)} (${classification})`;
 
   const resultDiv = document.getElementById("result");
-  const resetIMC = document.getElementById("resetIMC");
-  const calcIMC = document.getElementById("calcIMC");
+  const resetIMC = document.getElementById("resetImcButton");
+  const calcIMC = document.getElementById("calculateImcButton");
 
   if (calcIMC) {
     calcIMC.addEventListener('click', function () {
@@ -205,7 +210,7 @@ function IMC(event) {
  * @returns {number} Valor do INSS
  */
 function calculateINSS(salary) {
-  const link = document.querySelector('select').value;
+  const link = document.getElementById('employmentType') ? document.getElementById('employmentType').value : '1';
 
   switch (link) {
     case '1': // CLT
@@ -258,8 +263,8 @@ function calculateIRRF(salary, inss) {
 function Salary(event) {
   event.preventDefault();
 
-  const salaryInput = document.querySelector('input[name="salary"]').value;
-  const link = document.querySelector('select').value;
+  const salaryInput = document.getElementById('salaryInput') ? document.getElementById('salaryInput').value : '';
+  const link = document.getElementById('employmentType') ? document.getElementById('employmentType').value : '1';
 
   const salary = parseFloat(salaryInput.replace(',', '.'));
 
@@ -282,8 +287,8 @@ function Salary(event) {
   `;
 
   const resultDiv = document.getElementById("result");
-  const resetSalary = document.getElementById("resetSalary");
-  const calcSalary = document.getElementById("calcSalary");
+  const resetSalary = document.getElementById("resetSalaryButton");
+  const calcSalary = document.getElementById("calculateSalaryButton");
 
   if (calcSalary) {
     calcSalary.addEventListener('click', function () {

@@ -10,26 +10,26 @@
     <link rel="stylesheet" href="css/styles.css">
 
     <a href="index.html">
-        <button id="btn" title="Home"<i class="fa-solid fa-house"></i></button>
+        <button id="homeButton" title="Home"<i class="fa-solid fa-house"></i></button>
     </a>
 
     <div>
-        <form onsubmit="Salary(event)" id="formSalary">
+        <form onsubmit="Salary(event)" id="salaryForm">
             <h1>Cálculo de salário</h1>
 
-            <label for="job">Vínculo profissional:</label>
-            <select required>
+            <label for="employmentType">Vínculo profissional:</label>
+            <select id="employmentType" name="employmentType" required>
                 <option value="1">CLT</option>
                 <option value="2">MEI/PJ</option>
                 <option value="3">Pró-labore</option>
             </select>
 
-            <label for="salary">Faixa salarial:</label>
-            <input type="text" name="salary" placeholder="Ex: 1.500,00" pattern="^\d+([.,]\d+)?$" inputmode="decimal" required>
+            <label for="salaryInput">Faixa salarial:</label>
+            <input type="text" id="salaryInput" name="salaryInput" placeholder="Ex: 1.500,00" pattern="^\d+([.,]\d+)?$" inputmode="decimal" required>
 
             <div class="buttons">
-                <button type="submit" id="calcSalary">Calcular</button>
-                <button type="reset" id="resetSalary">Limpar</button>
+                <button type="submit" id="calculateSalaryButton">Calcular</button>
+                <button type="reset" id="resetSalaryButton">Limpar</button>
             </div>
         </form>
     </div>
